@@ -1,7 +1,8 @@
 class BeersController < ApplicationController
     def create
         beer = Beer.create(name: Faker::Beer.name, brewery_id: params[:brewery_id])
-        render json: beer
+        brewery = Brewery.find(beer[:brewery_id])
+        render json: brewery, include: [:beers]
     end 
 
     def destroy

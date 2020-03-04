@@ -7,7 +7,7 @@ class BreweriesController < ApplicationController
 
     def create
         brewery = Brewery.create(brewery_params)
-        render json: brewery
+        render json: brewery, include: [:beers]
     end 
 
     def show 
